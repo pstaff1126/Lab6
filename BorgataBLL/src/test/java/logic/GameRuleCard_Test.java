@@ -41,7 +41,7 @@ public class GameRuleCard_Test {
 	{
 		grCards = GameRuleCardsBLL.getCardsRules(1);
 		
-		assertTrue(grCards.size() == 4);
+		assertTrue(grCards.size() > 0);
 		
 	}
 	

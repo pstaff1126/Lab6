@@ -40,7 +40,7 @@ public class GameRule_Test {
 	{
 		gr = GameRuleDAL.getRules();
 		
-		assertTrue(gr.size() == 1);
+		assertTrue(gr.size() > 0);
 		
 	}
 	

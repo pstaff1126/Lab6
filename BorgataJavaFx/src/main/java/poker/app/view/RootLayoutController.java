@@ -67,31 +67,54 @@ public class RootLayoutController implements Initializable {
 	@FXML
 	private RadioMenuItem twoJoker = new RadioMenuItem();
 
+	public String getRuleName()
+	{	
+		String strRuleName = null;
+		for (Menu m: mb.getMenus())
+		{
+			if (m.getText() == "Games")
+			{
+				for (MenuItem mi: m.getItems())
+				{
+					if (mi.getClass().equals(RadioMenuItem.class))
+					{
+						RadioMenuItem rmi = (RadioMenuItem)mi;
+						if (rmi.isSelected() == true)
+						{
+							strRuleName = rmi.getText();
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		return strRuleName;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		Menu m = new Menu();
+		m.setText("Games");
 
-		m.setText("Test Menu");
-
-		ToggleGroup tg = new ToggleGroup();
+		//ToggleGroup tg = new ToggleGroup();
 		
 		for (GameRuleDomainModel gr : GameRuleBLL.getRules()) {
 			
 			RadioMenuItem mi = new RadioMenuItem();
 			String strRuleName = gr.getRULENAME();
-			mi.setToggleGroup(tg);
+			mi.setToggleGroup(tglGames);
 			mi.setText(strRuleName);
 			
 			if (gr.getDEFAULTGAME() == 1)
 			{
 				mi.setSelected(true);
-
 			}
 			m.getItems().add(mi);
 		}
 
-		mb.getMenus().add(m);
+		mb.getMenus().add(0,m);
 
 		// mb.getMenus().add(m);
 		// mainApp.rootController.getc
@@ -180,34 +203,6 @@ public class RootLayoutController implements Initializable {
 		this.mainApp = mainApp;
 	}
 
-	/**
-	 * Creates an empty address book.
-	 */
-	@FXML
-	private void handleNew() {
-	}
-
-	/**
-	 * Opens a FileChooser to let the user select an address book to load.
-	 */
-	@FXML
-	private void handleOpen() {
-	}
-
-	/**
-	 * Saves the file to the person file that is currently open. If there is no
-	 * open file, the "save as" dialog is shown.
-	 */
-	@FXML
-	private void handleSave() {
-	}
-
-	/**
-	 * Opens a FileChooser to let the user select a file to save to.
-	 */
-	@FXML
-	private void handleSaveAs() {
-	}
 
 	/**
 	 * Opens an about dialog.
@@ -230,19 +225,17 @@ public class RootLayoutController implements Initializable {
 		System.exit(0);
 	}
 
-	/**
-	 * Opens the birthday statistics.
-	 */
-	@FXML
-	private void handleShowBirthdayStatistics() {
-	}
 
 	public ToggleGroup getTglGames() {
 		return tglGames;
 	}
+	
+	
 
 	public void setTglGames(ToggleGroup tglGames) {
 		this.tglGames = tglGames;
 	}
+
+	
 
 }

@@ -77,10 +77,11 @@ public class MainApp extends Application {
 			primaryStage.setScene(scene);
 
 			// Give the controller access to the main app.
-			RootLayoutController controller = loader.getController();
+			//RootLayoutController controller = loader.getController();
+		    rootController = loader.getController();
 			
 			
-			controller.setMainApp(this);
+		    rootController.setMainApp(this);
 
 			primaryStage.show();
 		} catch (IOException e) {
@@ -144,12 +145,17 @@ public class MainApp extends Application {
 		this.iGameType = iGameType;
 	}
 	
-	public ToggleGroup getToggleGroup()
+/*	public ToggleGroup getToggleGroup()
 	{
 		ToggleGroup tgl = rootController.getTglGames();
 		return tgl;
 		
 
+	}*/
+	
+	public String getRuleName()
+	{
+		return rootController.getRuleName();
 	}
 	
 	
