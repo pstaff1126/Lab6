@@ -270,13 +270,13 @@ public class PokerTableController {
 	private void handlePlay() {
 
 		String strRuleName = mainApp.getRuleName();
-		HashMap<String, GameRuleDomainModel> hs = new HashMap();
+		HashMap<String, GameRuleDomainModel> hs = new HashMap<String, GameRuleDomainModel>();
 		hs = GameRuleBLL.getRuleHashSet();		
 		GameRuleDomainModel gr = hs.get(strRuleName);
 		
 		
 		
-		//tglGame = mainApp.getToggleGroup();
+		tglGame = mainApp.getToggleGroup();
 		
 		eGameState = eGameState.StartOfGame;
 		
@@ -301,7 +301,7 @@ public class PokerTableController {
 
 		// Get the Rule, start the Game
 		gme = new GamePlay(rle);
-
+		gr.setPLAYERNUMBEROFCARDS(5);
 		// Add the seated players to the game
 		for (Player p : mainApp.GetSeatedPlayers()) {
 			gme.addPlayerToGame(p);
@@ -374,7 +374,7 @@ public class PokerTableController {
 		eGameState = eGameState.PlayOfGame;
 
 		// Disable the button in case of double-click
-		SetGameControls(eGameState.DrawingCard);
+		SetGameControls(pokerEnums.eGameState.DrawingCard);
 
 		// Create the parent transition
 		SequentialTransition tranDealCards = new SequentialTransition();
@@ -435,7 +435,7 @@ public class PokerTableController {
 
 			ArrayList<GamePlayPlayerHand> AllPlayersHands = new ArrayList<GamePlayPlayerHand>();
 			ArrayList<Hand> BestPlayerHands = new ArrayList<Hand>();
-			HashMap hsPlayerHand = new HashMap();
+			HashMap<Hand, Player> hsPlayerHand = new HashMap<Hand, Player>();
 
 			for (Player p : mainApp.GetSeatedPlayers()) {
 				GamePlayPlayerHand GPPH = gme.FindPlayerGame(gme, p);
@@ -447,11 +447,12 @@ public class PokerTableController {
 				GPPH.setBestHand(hBestHand);
 				hsPlayerHand.put(hBestHand, GPPH.getPlayer());
 				BestPlayerHands.add(hBestHand);
+				System.out.println("winner");
 			}
 
 			final Hand WinningHand = Hand.PickBestHand(BestPlayerHands);
-			final Player WinningPlayer = (Player) hsPlayerHand.get(WinningHand);
-			//System.out.println("Winning Player Position: " + WinningPlayer.getiPlayerPosition());
+			final Player WinningPlayer = hsPlayerHand.get(WinningHand);
+			System.out.println("Winning Player Position: " + WinningPlayer.getiPlayerPosition());
 			
 			Timer timer = new Timer();
 			timer.schedule(new TimerTask() {

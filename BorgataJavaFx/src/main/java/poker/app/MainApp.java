@@ -145,13 +145,13 @@ public class MainApp extends Application {
 		this.iGameType = iGameType;
 	}
 	
-/*	public ToggleGroup getToggleGroup()
+	public ToggleGroup getToggleGroup()
 	{
 		ToggleGroup tgl = rootController.getTglGames();
 		return tgl;
 		
 
-	}*/
+	}
 	
 	public String getRuleName()
 	{

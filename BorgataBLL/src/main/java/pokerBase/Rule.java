@@ -3,9 +3,11 @@ package pokerBase;
 import java.util.ArrayList;
 
 import domain.CardDomainModel;
+import domain.GameRuleDomainModel;
 import enums.eGame;
 import enums.eRank;
 import enums.eSuit;
+import logic.GameRuleBLL;
 
 public class Rule {
 
@@ -20,12 +22,17 @@ public class Rule {
 	private int[] iCardsToDraw;
 	private ArrayList<CardDomainModel> RuleCards = new ArrayList<CardDomainModel>();
 	private eGame Game;
+	
+       
 
 	public Rule(eGame gme) {
+		
 		this.Game = gme;
 		switch (gme) {
+		
 		case FiveStud: {
-			this.MaxNumberOfPlayers = 4;
+			
+			this.MaxNumberOfPlayers= 4;
 			this.PlayerNumberOfCards = 5;
 			this.NumberOfJokers = 0;
 			this.PlayerCardsMin = 5;

@@ -116,31 +116,31 @@ public class RootLayoutController implements Initializable {
 
 		mb.getMenus().add(0,m);
 
-		// mb.getMenus().add(m);
+		 mb.getMenus().add(m);
 		// mainApp.rootController.getc
 		// root.getChildren().add(menuBar);
 
-		/*
-		 * CheckMenuItem item1 = new CheckMenuItem("5 card stud");
-		 * item1.selectedProperty().addListener(new ChangeListener(){
-		 * 
-		 * @Override public void changed(ObservableValue arg0, Object arg1,
-		 * Object arg2) { mainApp.setiGameType(1); } });
-		 * 
-		 * 
-		 * mnuGame.getItems().add(item1);
-		 * 
-		 * 
-		 * 
-		 * CheckMenuItem item2 = new CheckMenuItem("5 card draw");
-		 * item2.selectedProperty().addListener(new ChangeListener(){
-		 * 
-		 * @Override public void changed(ObservableValue arg0, Object arg1,
-		 * Object arg2) { mainApp.setiGameType(2); } });
-		 * 
-		 * 
-		 * mnuGame.getItems().add(item2);
-		 */
+		
+		  CheckMenuItem item1 = new CheckMenuItem("5 card stud");
+		  item1.selectedProperty().addListener(new ChangeListener(){
+		  
+		  @Override public void changed(ObservableValue arg0, Object arg1,
+		  Object arg2) { mainApp.setiGameType(1); } });
+		  
+		  
+		  mnuGame.getItems().add(item1);
+		  
+		  
+		 
+		  CheckMenuItem item2 = new CheckMenuItem("5 card draw");
+		  item2.selectedProperty().addListener(new ChangeListener(){
+		  
+		  @Override public void changed(ObservableValue arg0, Object arg1,
+		  Object arg2) { mainApp.setiGameType(2); } });
+		  
+		  
+		  mnuGame.getItems().add(item2);
+		 
 
 	}
 
